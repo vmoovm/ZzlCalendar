@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>日历和时间合并</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link href="css/zcalendar.css" rel="stylesheet" type="text/css" />
+<link href="css/ztime.css" rel="stylesheet" type="text/css" />
+<script src="js/ratio.js" type="text/javascript"></script>
+<script src="js/solar2lunar.js" type="text/javascript"></script>
+<style type="text/css">
+	.zinput { border: 1px #ccc solid; height: .4rem; width: 40%; padding: .1rem; background: #fff; margin: .2rem; font-size: .3rem;}
+</style>
+</head>
+
+<body>
+	
+	<input class="zinput zzl-js" type="text" name="" id="" value="" />
+	<input class="zinput zzl-js" type="text" name="" id="" value="" />
+	<input class="zinput zzl-js" type="text" name="" id="" value="" />
+<div class="zcalendar-opacity" id="zcalendar-opacity"></div>
+<!--main start-->
+<div class="">
+	
+	<div class="zcalendar" id="zcalendar">
+		<div class="zcalendar-months">
+			<div class="zcalendar-header">
+				<dl class="zcalendar-headerLeft">
+					<dd class="zcalendar-prevYear" id="prevYear"></dd>
+					<dd class="zcalendar-prevMonth" id="prevMonth"></dd>
+					<dt class="zcalendar-result zcalendar-white">
+						<div class="" id="setDate">
+							<span data-year="2018年" data-month="10月">2018年10月</span>
+						</div>
+						<!--<div class="calendar-time"><h1>15:00</h1><p></p></div>-->
+					</dt>
+					<dd class="zcalendar-nextMonth" id="nextMonth"></dd>
+					<dd class="zcalendar-nextYear" id="nextYear"></dd>
+				</dl>
+				<p class="zcalendar-headerRight zcalendar-gray" id="today">今天</p>
+			</div>
+			<style type="text/css">
+				.zcalendar-site { position: relative; width: 100%; height: 0; z-index: 1;}
+				.zcalendar-box { position: absolute; overflow: hidden; left: 0; top: 0; right: 0; width: 100%; height: 2rem; background: #181F28; color: #fff;}
+				.zcalendar-scroll { width: 100%; height: 1rem; overflow-x: auto;}
+				.zcalendar-scroll ul { width: 100%; margin-top: .1rem;}
+				.zcalendar-scroll ul li { float: left; font-size: .18rem; margin: .1rem; vertical-align: bottom; line-height: 1;}
+				.zcalendar-scroll ul:after { content: ''; clear: both; display: block;}
+				.zcalendar-scroll ul li.cur { font-size: .48rem;}
+			</style>
+			<div class="zcalendar-body" id="zcalendarBody"></div>
+		</div>
+		<div class="zcalendar-btn" id="zcalendarBtn"><p>选好了</p></div>
+		
+	</div>
+	<div class="ztime ztime-hide" id="ztime">
+			
+	</div>
+</div>
+<!--main end-->
+
+<script src="js/ZzlCalendar.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/ztime.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var self = null
+	var zzls = document.querySelectorAll('.zzl-js')
+	var zcalendarOpacity = document.getElementById('zcalendar-opacity')
+	var zcalendar = document.getElementById('zcalendar')
+	for (var i = 0; i < zzls.length; i++) {
+		zzls[i].addEventListener('click', function () {
+			zcalendar.style.display = 'block'
+			zcalendarOpacity.style.display = 'block'
+			var sted = renC.myCalendar.querySelectorAll('.zcalendar-selected')
+			for (var t = 0; t < sted.length; t++) {
+				sted[t].classList.remove('zcalendar-selected')
+			}
+			dateArr = []
+			self = this
+		}, false)
+	}
+	var dateArr = [] // 多选时暂时日期
+	/*
+	 * 关闭日历
+	 */
+	var closelayer = function () {
+		zcalendar.style.display = 'none'
+	}
+	// 点阴影关闭日历
+	zcalendarOpacity.addEventListener('click', function (e) {
+		if (e.target.id == 'zcalendar-opacity') {
+			zcalendar.style.display = 'none'
+			isShowTimer(false)
+			zcalendarOpacity.style.display = 'none'
+		}
+	})
+	// 实例化
+	var renC = new ZzlCalendar ('zcalendarBody', {
+		disEvent: ['2018-11-10', '2018-10-1', '2019-10-1', '2019-11-11', '2019-8-8', '2019-1-1', '2017-12-12', '2017-7-7', '2017-7-9', '2020-11-2', '2017-10-19'], // 不需要绑定事件的日期
+		initDate: '2019-11-20', // 指定初始日历月份，默认为今天
+		selectMonthId: 'setDate', // 为空不能选择日期
+		showTagName: 'span', // 选择月份后，时间要显示的元素，具体标签，一般为：span  em i p div li dd dt a 等
+		selectType: 1, // 默认为1，1为单选模式，2为多选模式
+		isPastDate: false, // 是否只允许翻阅今天以前日期（禁止未来日期）
+		isFutureDate: true, // 是否只允许翻阅今天以后的日期（禁止过去日期）
+		onSelect: function (o) { // 日期选择事件
+			// 选中某一天追加样式
+			if (o.id.slice(0, 3) != 'wrn') {// 排除上月末和下月初提示日期（灰字日期）
+				var currentDom = document.getElementById(o.id)
+				// 单选模式（默认1）
+				if (o.type == 1) {
+					var sted = renC.myCalendar.querySelectorAll('.zcalendar-selected')
+					for (var t = 0; t < sted.length; t++) {
+						sted[t].classList.remove('zcalendar-selected')
+					}
+					currentDom.classList.add('zcalendar-selected')
+					if (clearInterval) clearTimeout(clearInterval)
+					var clearInterval = setTimeout(function () {
+						zcalendar.style.display = 'none'
+						isShowTimer(true)
+					}, 100)
+					// 多选模式(2)
+				} else if (o.type == 2) {
+					if (RegExp(' zcalendar-selected ').test(' ' + currentDom.className + ' ')) {
+						currentDom.classList.remove('zcalendar-selected')
+						var isExist = dateArr.indexOf(o.id.slice(3))
+						if (isExist > 0) {
+							dateArr.splice(isExist, 1)
+						}
+					} else {
+						currentDom.classList.add('zcalendar-selected')
+						dateArr.push(o.id.slice(3))
+					}
+				}
+			}
+		},
+		hideFn: function () {
+			closelayer()
+			console.log(dateArr)
+			self.value = dateArr
+		},
+		seletMonthFn: function (o) { // 年份月份选择后触发
+			renC.appendStaute(defindeOption1)
+			console.log(o)
+		},
+		RenderHtmlFn: function () {
+			// console.log(document.getElementById(renC.zconf.selectMonthId).children[0])
+			// document.getElementById(renC.zconf.selectMonthId).children[0].setAttribute('data-year', renC.year + '年')
+			// document.getElementById(renC.zconf.selectMonthId).children[0].setAttribute('data-month', renC.month + '月')
+			// document.getElementById(renC.zconf.selectMonthId).children[0].innerText = renC.year + '年' + renC.month + '月'
+			renC.appendStaute (defindeOption1)
+		},
+		nothingDataFn: function (o) {
+			console.log(o)
+			if (o.type == 'year') {
+				console.log(o.year * 1 + 1 + '年没有数据')
+			} else if (o.type == 'month') {
+				console.log(o.month + 1 + '月份没有数据')
+			}
+		},
+		notNnallowedDataFn: function (o) {
+			console.log(o)
+			if (o.type == 'year') {
+				console.log(o.year - 1 + '年没有数据')
+			} else if (o.type == 'month') {
+				console.log((o.month - 1 == 0 ? 12 : o.month - 1) + '月份没有数据')
+			}
+		}
+	})
+	
+	// 有得分小熊的日期(模拟数据)
+	var defindeOption1 = [
+		{site: '2016-11-11', type: 1},
+		{site: '2017-11-10', type: 2, text: '已填'},
+		{site: '2019-11-20', type: 3},
+		{site: '2020-11-16', type: 4, text: '日志'},
+		{site: '2021-11-18', type: 5, text: '<a style="font-size:.2rem; color:#09f;" href="http://www.baidu.com">链接</a>'}
+	]
+	// 将模拟数据渲染到日历上
+	renC.appendStaute (defindeOption1)
+	
+			var ztime = document.getElementById('ztime')
+			var self = null
+			
+			function isShowTimer(show) {
+				if (show == true) {
+					ztime.classList.remove('ztime-hide')
+					// zcalendarOpacity.classList.remove('ztime-hide')
+				} else {
+					ztime.classList.add('ztime-hide')
+					// zcalendarOpacity.classList.add('ztime-hide')
+				}
+			}
+			
+			// 实例时间表
+			var time = new ZzlTime('ztime', {
+				onSelect: function (o) {
+					if (o.type == 1) {
+						var sted = time.myTime.querySelectorAll('.ztime-setedHour')
+						for (var t = 0; t < sted.length; t++) {
+							sted[t].classList.remove('ztime-setedHour')
+						}
+						document.getElementById(o.id).classList.add('ztime-setedHour')
+					}
+					if (o.type == 2) {
+						var sted = time.myTime.querySelectorAll('.ztime-setedMinute')
+						for (var t = 0; t < sted.length; t++) {
+							sted[t].classList.remove('ztime-setedMinute')
+						}
+						document.getElementById(o.id).classList.add('ztime-setedMinute')
+					}
+				},
+				onBack: function () {
+					console.log('返回或者退出')
+					isShowTimer(false)
+					zcalendar.style.display = 'block'
+				},
+				onComplete: function () {
+					console.log('完成选择')
+					zcalendarOpacity.style.display = 'none'
+					self.value = renC.year + '-' + renC.month + '-' + renC.date + ' ' + time.hour + ':' + time.minute
+					// self.value = time.hour + ':' + time.minute
+					isShowTimer(false)
+				}
+			})
+			
+			// 点击回到今天
+			document.getElementById("today").addEventListener('click', function () {
+				renC.toToday()
+				// 将模拟数据渲染到日历上
+				renC.appendStaute (defindeOption1)
+			})
+		</script>
+
+</body>
+</html>

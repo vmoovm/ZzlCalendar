@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title>给某天追加自定义样式和文本</title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/zcalendar.css"/>
+		<script src="../js/ratio.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/solar2lunar.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ZzlCalendar.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.zinput { border: 1px #ccc solid; height: .4rem; width: 40%; padding: .1rem; background: #fff; margin: .2rem; font-size: .3rem;}
+			.defineClass {background:#ccc; font-size:.18rem;}
+		</style>
+	</head>
+	<body>
+		<input class="zinput zzl-js" type="text" name="" id="" value="" />
+		<input class="zinput zzl-js" type="text" name="" id="" value="" />
+		<input class="zinput zzl-js" type="text" name="" id="" value="" />
+		<div class="zcalendar-opacity" id="zcalendar-opacity"></div>
+		<!--main start-->
+		<div class="zcalendar" id="zcalendar">
+			<div class="zcalendar-months">
+				<div class="zcalendar-header">
+					<dl class="zcalendar-headerLeft">
+						<dd class="zcalendar-prevYear" id="prevYear"></dd>
+						<dd class="zcalendar-prevMonth" id="prevMonth"></dd>
+						<dt class="zcalendar-result zcalendar-white">
+							<div class="" id="setDate">
+								<span data-year="2018年" data-month="10月">2018年10月</span>
+							</div>
+						</dt>
+						<dd class="zcalendar-nextMonth" id="nextMonth"></dd>
+						<dd class="zcalendar-nextYear" id="nextYear"></dd>
+					</dl>
+					<p class="zcalendar-headerRight zcalendar-gray" id="today">今天</p>
+				</div>
+				<div class="zcalendar-body" id="zcalendarBody"></div>
+			</div>
+			<div class="zcalendar-btn" id="zcalendarBtn"><p>选好了</p></div>
+		</div>
+		<!--main end-->
+		<script type="text/javascript">
+			var zzls = document.querySelectorAll('.zzl-js')
+			var zcalendarOpacity = document.getElementById('zcalendar-opacity')
+			var zcalendar = document.getElementById('zcalendar')
+			for (var i = 0; i < zzls.length; i++) {
+				zzls[i].addEventListener('click', function () {
+					zcalendar.style.display = 'block'
+					zcalendarOpacity.style.display = 'block'
+				}, false)
+			}
+			/*
+			 * 关闭日历
+			 */
+			var closelayer = function () {
+				zcalendarOpacity.style.display = 'none'
+				zcalendar.style.display = 'none'
+			}
+			
+			// 点阴影关闭日历
+			zcalendarOpacity.addEventListener('click', function (e) {
+				if (e.target.id == 'zcalendar-opacity') {
+					closelayer()
+				}
+			})
+			
+			// 实例化
+			var renC = new ZzlCalendar ('zcalendarBody', {
+				RenderHtmlFn: function () { // 可动态渲染自定义样式和文本，支持html和链接
+					renC.appendStaute (defindeOption1)
+				}
+			})
+			
+			/**
+			 * 为某些日期自定义样式和文本，支持html和链接(模拟数据)
+			 * 1对应样式表中自定义1 .zcalendar-define1 {} 
+			 * 2对应样式表中自定义1 .zcalendar-define3 {}
+			 * ......
+			 * 
+			 */
+			
+			var defindeOption1 = [
+				{site: '2016-11-11', type: 1},
+				{site: '2017-11-10', type: 2, text: '已填'},
+				{site: '2019-11-20', type: 3},
+				{site: '2020-11-16', type: 4, text: '日志'},
+				{site: '2021-11-18', type: 5, text: '<a style="font-size:.2rem; color:#09f;" href="http://www.baidu.com">链接</a>'}
+			]
+			// 将模拟数据渲染到日历上
+			renC.appendStaute (defindeOption1)
+			
+			
+			// 点击回到今天
+			document.getElementById("today").addEventListener('click', function () {
+				renC.toToday()
+				// 将模拟数据渲染到日历上
+				renC.appendStaute (defindeOption1)
+			})
+		</script>
+	</body>
+</html>

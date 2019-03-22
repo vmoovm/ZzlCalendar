@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>学习中心-学习日历</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/zcalendar.css" rel="stylesheet" type="text/css" />
+<script src="js/ratio.js" type="text/javascript"></script>
+<script src="js/solar2lunar.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<!--main start-->
+<div class="zcalendar" id="zcalendar">
+	<div class="zcalendar-months">
+		<div class="zcalendar-header zcalendar-line">
+			<h1 class="zcalendar-headerLeft zcalendar-color" data-select="zcalendar-select" id="setDate">2018年9月</h1>
+			<p class="zcalendar-headerRight zcalendar-gray" id="today">本月已学习600分钟</p>
+		</div>
+		<div class="zcalendar-body" id="zcalendarBody"></div>
+		
+		<!--以下为静态实例-->
+		
+		<br /><br /><br /><br /><br />
+		<div class="zcalendar-body">
+			<!--星期 start-->
+			<dl class="zcalendar-tr zcalendar-line" data-week="">
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>日</dt></dl></dt>
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>一</dt></dl></dt>
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>二</dt></dl></dt>
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>三</dt></dl></dt>
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>四</dt></dl></dt>
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>五</dt></dl></dt>
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>六</dt></dl></dt>
+			</dl>
+			<!--星期 end-->
+			<!--自然日 start-->
+			<dl class="zcalendar-tr zcalendar-gray zcalendar-line">
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">1</dt><dd class="zcalendar-lunar">国庆节</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">2</dt><dd class="zcalendar-lunar">廿三</dd></dl><div class="zcalendar-define zcalendar-define2"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">3</dt><dd class="zcalendar-lunar">廿四</dd></dl><div class="zcalendar-define zcalendar-define3"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">4</dt><dd class="zcalendar-lunar">廿五</dd></dl><div class="zcalendar-define zcalendar-define4"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">5</dt><dd class="zcalendar-lunar">廿六</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date zcalendar-today"><dt class="zcalendar-solar">6</dt><dd class="zcalendar-lunar">廿七</dd></dl><div class="zcalendar-define zcalendar-define2"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">7</dt><dd class="zcalendar-lunar">廿八</dd></dl><div class="zcalendar-define zcalendar-define3"><p></p></div></dd>
+			</dl>
+			<dl class="zcalendar-tr zcalendar-gray zcalendar-line">
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">8</dt><dd class="zcalendar-lunar">廿九</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">9</dt><dd class="zcalendar-lunar">三十</dd></dl><div class="zcalendar-define zcalendar-define2"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">10</dt><dd class="zcalendar-lunar">初一</dd></dl><div class="zcalendar-define zcalendar-define3"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">11</dt><dd class="zcalendar-lunar">初二</dd></dl><div class="zcalendar-define zcalendar-define4"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">12</dt><dd class="zcalendar-lunar">初三</dd></dl><div class="zcalendar-define zcalendar-define2"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">13</dt><dd class="zcalendar-lunar">初四</dd></dl><div class="zcalendar-define zcalendar-define3"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">14</dt><dd class="zcalendar-lunar">初五</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+			</dl>
+			<dl class="zcalendar-tr zcalendar-gray zcalendar-line">
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">15</dt><dd class="zcalendar-lunar">初六</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">16</dt><dd class="zcalendar-lunar">初七</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">17</dt><dd class="zcalendar-lunar">初八</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">18</dt><dd class="zcalendar-lunar">初九</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">19</dt><dd class="zcalendar-lunar">初十</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">20</dt><dd class="zcalendar-lunar">十一</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">21</dt><dd class="zcalendar-lunar">十二</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+			</dl>
+			<dl class="zcalendar-tr zcalendar-gray zcalendar-line">
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">22</dt><dd class="zcalendar-lunar">十三</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">23</dt><dd class="zcalendar-lunar">十四</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">24</dt><dd class="zcalendar-lunar">十五</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">25</dt><dd class="zcalendar-lunar">十六</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">26</dt><dd class="zcalendar-lunar">十七</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">27</dt><dd class="zcalendar-lunar">十八</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">28</dt><dd class="zcalendar-lunar">十九</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+			</dl>
+			<dl class="zcalendar-tr zcalendar-gray zcalendar-line">
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">29</dt><dd class="zcalendar-lunar">二十</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">30</dt><dd class="zcalendar-lunar">廿一</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">31</dt><dd class="zcalendar-lunar">廿二</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">1</dt><dd class="zcalendar-lunar">廿三</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">2</dt><dd class="zcalendar-lunar">廿四</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">3</dt><dd class="zcalendar-lunar">廿五</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+				<dd class="zcalendar-td"><dl class="zcalendar-date"><dt class="zcalendar-solar">4</dt><dd class="zcalendar-lunar">廿六</dd></dl><div class="zcalendar-define zcalendar-define1"><p></p></div></dd>
+			</dl>
+			<!--自然日 end-->
+		</div>
+	</div>
+	<div class="zrule">
+		<dl class="zrule-list">
+			<dt>小熊获得规则</dt>
+			<dd><span>1. 当观看课程视频时间超过5分钟时，获得</span><img src="images/bear-green.png"/></dd>
+			<dd><span>2. 当观看课程视频时间超过30分钟不足50分钟时，获得</span><img src="images/bear-blue.png"/></dd>
+			<dd><span>3. 当观看课程视频时间超过50分钟不足90分钟时，获得</span><img src="images/bear-purple.png"/></dd>
+			<dd><span>4. 当观看课程视频时间超过90分钟时，获得</span><img src="images/bear-red.png"/></dd>
+		</dl>
+	</div>
+</div>
+<!--main end-->
+<script type="text/javascript">
+	
+	/**
+	 * 日历
+	 * 
+	 */
+	function ZzlCalendar (domId, options) {
+		var that = this
+		this.zconf = {
+			showLunarCalendar: true, //是否显示阴历日期
+			// showMark: true,          //是否显示标记日期
+			disEvent: [], // 禁止绑定事件的日期，例：['2018-10-10', '2017-1-20']
+			onSelect: function () {} // 日期选择事件
+		};
+		// 合并配置项
+		for(v in this.zconf){
+			for(b in options){
+				if(v==b){
+					this.zconf[v]=options[b];
+				}
+			}
+		}
+		this.myCalendar = document.getElementById(domId)
+		// 初始化时间
+		this.nowDate = new Date()
+		
+		/**
+		 * 渲染日历
+		 */
+		this.RenderCalendar = function (year, month) {
+			this.year = year
+			this.month = month
+			if (this.year < 1900) {
+				console.log('1900年前为无意义操作')
+				return
+			}
+			if (this.month < 1 || this.month > 12) {
+				console.log('月份只包含1-12，其他为无效月份')
+				return
+			}
+			
+			// 取当月第一天周几
+			this.day = new Date(this.year, this.month - 1, 1).getDay()
+			// 当月总天数
+			this.monthDays = 31 
+			if (/^2/.test(this.month)) {
+				// 是平年或闰年
+				if (this.year % 400 == 0 || (this.year % 100 != 0 && this.year % 4 == 0)) {
+					this.monthDays = 29
+				} else {
+					this.monthDays = 28
+				}
+			} else if (/^4|6|9|11$/.test(this.month)) {
+				this.monthDays = 30
+			}
+			// 行数
+			var row = Math.ceil((this.monthDays + this.day) / 7)
+			var zlunarHTML = '' // 农历标签
+			// 按年月日拼日历innerHTML
+			var defindeHTML = '<p></p>'
+			var calendarHTML = ''
+			// 添加星期
+			calendarHTML += '<dl class="zcalendar-tr zcalendar-line" data-week="">\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>日</dt></dl></dt>\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>一</dt></dl></dt>\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>二</dt></dl></dt>\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>三</dt></dl></dt>\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>四</dt></dl></dt>\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>五</dt></dl></dt>\
+				<dt class="zcalendar-th"><dl class="zcalendar-week"><dt>六</dt></dl></dt>\
+			</dl>'
+			var nd = 0 // 计单元格数和作为日期显示(numberDay)
+			for (var r = 0; r < row; r++) {
+				calendarHTML += '<dl class="zcalendar-tr zcalendar-gray zcalendar-line">'
+				for (var c = 0; c < 7; c++, nd++) {
+					if (nd < this.day) { // 上月
+						var emptyObj = new Date(new Date(this.year, this.month - 1, 1).setTime(new Date(this.year, this.month - 1, 1).setMonth(new Date(this.year, this.month - 1, 1).getMonth() - 1)))
+						var emptyObj1 = new Date(new Date(this.year, this.month - 1, 1).setTime(new Date(this.year, this.month - 1, 1).setDate(new Date(this.year, this.month - 1, 1).getDate() - this.day + nd)))
+						// 是否显示农历
+						if (this.zconf.showLunarCalendar) {
+							zlunarHTML = '<dd class="zcalendar-lunar">' + calendar.solar2lunar(emptyObj.getFullYear(), (emptyObj.getMonth() + 1), emptyObj1.getDate()).IDayCn + '</dd>'
+						}
+						calendarHTML += '<dd class="zcalendar-td zcalendar-light" id="col' + emptyObj.getFullYear() + '-' + (emptyObj.getMonth() + 1) + '-' + emptyObj1.getDate() + '"><dl class="zcalendar-date"><dt class="zcalendar-solar">'+ emptyObj1.getDate() +'</dt>' + zlunarHTML + '</dl><div class="zcalendar-define">' + defindeHTML + '</div></dd>'
+					} else if (nd >= (this.monthDays + this.day)) { // 下月
+						var emptyObj = new Date(new Date(this.year, this.month + 1, 1).setTime(new Date(this.year, this.month + 1, 1).setMonth(new Date(this.year, this.month + 1, 1).getMonth() - 1)))
+						// 是否显示农历
+						if (this.zconf.showLunarCalendar) {
+							zlunarHTML = '<dd class="zcalendar-lunar">' + calendar.solar2lunar(emptyObj.getFullYear(), (emptyObj.getMonth() + 1), (emptyObj.getDate() + nd - this.monthDays - this.day)).IDayCn + '</dd>'
+						}
+						calendarHTML += '<dd class="zcalendar-td zcalendar-light" id="col' + emptyObj.getFullYear() + '-' + (emptyObj.getMonth() + 1) + '-' + (emptyObj.getDate() + nd - this.monthDays - this.day) + '"><dl class="zcalendar-date"><dt class="zcalendar-solar">' + (emptyObj.getDate() + nd - this.monthDays - this.day) + '</dt>' + zlunarHTML + '</dl><div class="zcalendar-define">' + defindeHTML + '</div></dd>'
+					} else { // 当月
+						// 区别当天时间
+						
+						// 是否显示农历
+						if (this.zconf.showLunarCalendar) {
+							zlunarHTML = '<dd class="zcalendar-lunar">' + calendar.solar2lunar(this.year, this.month, (nd - this.day + 1)).IDayCn + '</dd>'
+						}
+						if ((nd - this.day) == this.nowDate.getDate()) {
+							calendarHTML += '<dd class="zcalendar-td" id="col' + this.year + '-' + this.month + '-' + (nd - this.day + 1) + '"><dl class="zcalendar-date zcalendar-today"><dt class="zcalendar-solar">'+ (nd - this.day + 1) +'</dt>' + zlunarHTML + '</dl><div class="zcalendar-define">' + defindeHTML + '</div></dd>'
+						} else {
+							calendarHTML += '<dd class="zcalendar-td" id="col' + this.year + '-'  + this.month + '-' + (nd - this.day + 1) + '"><dl class="zcalendar-date"><dt class="zcalendar-solar">'+ (nd - this.day + 1) +'</dt>' + zlunarHTML + '</dl><div class="zcalendar-define">' + defindeHTML + '</div></dd>'
+						}
+					}
+				}
+				calendarHTML += '</dl>'
+			}
+			this.myCalendar.innerHTML = calendarHTML
+			
+			/**
+			 * 获取所有 zcalendar-td 元素子节点
+			 * @param {Object} ele 父元素
+			 * @param {type} className样式名字
+			 * 
+			 */
+			var userChildren = function (ele) { 
+				var chid=ele.childNodes; 
+				var eleMatch = []; 
+				for(var i=0,l=chid.length;i<l;i++){ 
+					if (chid[i].nodeType == 1) eleMatch.push(chid[i]);
+				}
+				var eles = [];
+				for (var c = 0; c < eleMatch.length; c++) {
+					for (var j = 0; j < eleMatch[c].childNodes.length; j++) {
+						if (eleMatch[c].childNodes[j].nodeType == 1) eles.push(eleMatch[c].childNodes[j])
+					}
+				}
+				return eles; 
+			}
+			
+			for (var n = 0; n < userChildren(this.myCalendar).length; n++) {
+				// 指定的日期禁止注册事件
+				if (userChildren(this.myCalendar)[n].id && this.zconf.disEvent.indexOf(userChildren(this.myCalendar)[n].id.slice(3)) < 0 ) {
+					userChildren(this.myCalendar)[n].addEventListener('click', function (e) {
+						that.zconf.onSelect({
+							// info: calendar.solar2lunar(this.id.slice(3).split('-')[0], this.id.slice(3).split('-')[1], this.id.slice(3).split('-')[2]),
+							id: this.id, // 返回当前点击元素的id
+							// year: that.year, // 返回当月的年份
+							// month: that.month, // 返回当月的月份
+							e: e
+						})
+					}, false)
+				}
+			}
+		}
+		
+		/**
+		 * 追加状态（小熊）
+		 * @param {Array} 数组内包含对象（json）,如[{site: '2015-10-2', type: 1}, {site: '2015-1-12', type: 2}]
+		 */
+		this.appendStaute = function (defindeOption) {
+			for (var i = 0; i < defindeOption.length; i++) {
+				if (that.month == defindeOption[i].site.split('-')[1]) { // 仅追加当月状态，非当月的无效
+					document.getElementById('col' + defindeOption[i].site).getElementsByClassName('zcalendar-define')[0].className = 'zcalendar-define zcalendar-define' + defindeOption[i].type
+				}
+			}
+		}
+		
+		/**
+		 * 追加自定义状态
+		 * @param {Array} 需传数组，如['2018-10-25', '2018-5-2']
+		 * @param {String} 传字符html代码块， 如'<div class="zcalendar-warning"></div>'
+		 * 
+		 */
+		this.appendDefind = function (defindeOption, htmlStr) {
+			// 将自符串html转换为dom对象
+			function parseToDOM (str) {
+			   var div = document.createElement('div')
+			   if(typeof str == 'string')
+			       div.innerHTML = str
+			   return div.childNodes
+			}
+			for (var i = 0; i < defindeOption.length; i++) {
+				document.getElementById('col' + defindeOption[i]).appendChild(parseToDOM(htmlStr)[0].cloneNode())
+			}
+		}
+		
+		/**
+		 * 回到今天
+		 */
+		this.toToday = function () {
+			console.log('回到今天')
+			that.RenderCalendar(that.nowDate.getFullYear(), that.nowDate.getMonth())
+			
+		}
+	}
+	
+	
+	
+	// 实例化
+	var renC = new ZzlCalendar ('zcalendarBody', {
+		onSelect: function (o) { // 日期选择事件
+			// var info = calendar.solar2lunar(o.id.slice(3).split('-')[0], o.id.slice(3).split('-')[1], o.id.slice(3).split('-')[2]) // 获取对应日期信息
+			// console.log(info.cMonth) // 获得当前点击日期的月份 
+			// console.log(o.id.slice(3).split('-')[1]) // 获得当前点击日期的月份 
+			// console.log(renC.month) // 获得当月月份
+			// 选中某一天
+			if (renC.month == o.id.slice(3).split('-')[1]) {// 排除上月和下月提示日期
+				if (/(\s|^)zcalendar-selected(\s|$)/.test(document.getElementById(o.id).className)) {
+					document.getElementById(o.id).classList.remove('zcalendar-selected')
+				} else {
+					document.getElementById(o.id).classList.add('zcalendar-selected')
+				}
+			}
+		},
+		disEvent: ['2018-11-10', '2018-11-2', '2018-11-19'] // 不需要绑定事件的日期
+	})
+	renC.RenderCalendar(2018, 11)
+	
+	// 有得分小熊的日期
+	var defindeOption1 = [
+		{site: '2018-11-11', type: 1},
+		{site: '2018-11-10', type: 2},
+		{site: '2018-11-20', type: 3},
+		{site: '2018-11-16', type: 4}
+	]
+	renC.appendStaute (defindeOption1)
+	
+	// 追加自定义状态,支持代码块
+	var defindeOption2 = ['2018-11-10', '2018-11-2', '2018-11-19']
+	renC.appendDefind (defindeOption2, '<div class="zcalendar-warning"></div>')
+	document.getElementById("today").addEventListener('click', function () {
+		renC.toToday()
+		renC.appendStaute (defindeOption1)
+	})
+	
+</script>
+<script src="js/getdate.js" type="text/javascript"></script>
+<script type="text/javascript">
+	// 未来1年和过去1年
+	new CXFun_getdate("#setDate", 1, 4,false, function(e){
+		renC.RenderCalendar(e[0].id, e[1].id)
+		renC.appendStaute (defindeOption1)
+		console.log(e)
+	});
+</script>
+</body>
+</html>

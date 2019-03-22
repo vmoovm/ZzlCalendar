@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>时间</title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/ztime.css"/>
+		<script src="js/ratio.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.fillTimes {}
+			.fillTimes input { margin: .2rem; border: #ebebeb 1px solid; background: none; line-height: .4rem; width: 160px; font-size: .3rem; color: #333;}
+		</style>
+	</head>
+	<body>
+		<div class="ztime-opacity ztime-hide" id="ztimeOpacity"></div>
+		<div class="ztime ztime-hide" id="ztime">
+			
+		</div>
+		<div class="fillTimes" id="fillTimes">
+			<input type="text" name="fillTime1" id="fillTime1" value="" />
+			<input type="text" name="fillTime2" id="fillTime2" value="" />
+		</div>
+		<script src="js/ztime.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var ztimeOpacity = document.getElementById("ztimeOpacity")
+			var ztime = document.getElementById('ztime')
+			var fillBanks = document.getElementById('fillTimes').getElementsByTagName('input')
+			var self = null
+			
+			function isShowTimer(show) {
+				if (show == true) {
+					ztime.classList.remove('ztime-hide')
+					ztimeOpacity.classList.remove('ztime-hide')
+				} else {
+					ztime.classList.add('ztime-hide')
+					ztimeOpacity.classList.add('ztime-hide')
+				}
+			}
+			for (var i = 0; i < fillBanks.length; i++) {
+				fillBanks[i].addEventListener('click', function () {
+					isShowTimer(true)
+					self = this
+				}, false)
+			}
+			ztimeOpacity.addEventListener('click', function () {
+				isShowTimer(false)
+			}, false)
+			
+			// 实例时间表
+			var time = new ZzlTime('ztime', {
+				onSelect: function (o) {
+					console.log(o)
+					if (o.type == 1) {
+						console.log('小时')
+						var sted = time.myTime.querySelectorAll('.ztime-setedHour')
+						for (var t = 0; t < sted.length; t++) {
+							sted[t].classList.remove('ztime-setedHour')
+						}
+						document.getElementById(o.id).classList.add('ztime-setedHour')
+					}
+					if (o.type == 2) {
+						console.log('分钟')
+						var sted = time.myTime.querySelectorAll('.ztime-setedMinute')
+						for (var t = 0; t < sted.length; t++) {
+							sted[t].classList.remove('ztime-setedMinute')
+						}
+						document.getElementById(o.id).classList.add('ztime-setedMinute')
+					}
+				},
+				onBack: function () {
+					console.log('返回或者退出')
+					isShowTimer(false)
+				},
+				onComplete: function () {
+					console.log('完成选择')
+					self.value = time.hour + ':' + time.minute
+					isShowTimer(false)
+				}
+			})
+			
+			
+		</script>
+		<style type="text/css">
+			// 获取时间的id Dom
+			/*time.myTime*/
+		</style>
+	</body>
+</html>

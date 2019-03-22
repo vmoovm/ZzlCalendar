@@ -1,0 +1,72 @@
+.ztime { position: fixed; left: 50%; top: 50%; margin-left: -3rem; margin-top: -4rem; width: 6rem; height: 8rem; color: #333; font-size: .24rem; background: #fff;}
+.ztime-hide { display: none;}
+.ztime-opacity { position: fixed; left: 0; top: 0; bottom: 0; right: 0; background-color: rgba(0, 0, 0, .5);}
+.ztime-header { display: -webkit-box; -webkit-box-align: center; height: auto; padding: .12rem .3rem; background: #181f28;}
+.ztime-headerLeft { -webkit-box-flex: 1; display: -webkit-box; -webkit-box-align: center; font-size: .36rem;}
+.ztime-headerRight { font-size: .24rem;}
+.ztime-prevHour,
+.ztime-nextHour { width: .24rem; height: .24rem; margin-left: .14rem; margin-right: .14rem; background-position: center center; background-repeat: no-repeat; background-size: .24rem .16rem;}
+.ztime-prevHour { background-image: url(../images/preDouble.png);}
+.ztime-nextHour { background-image: url(../images/nextDouble.png);}
+.ztime-prevMinute,
+.ztime-nextMinute { width: .2rem; height: .2rem; margin-left: .14rem; margin-right: .14rem; background-position: center center; background-repeat: no-repeat; background-size: .14rem .14rem;}
+.ztime-prevMinute { background-image: url(../images/prevSingle.png);}
+.ztime-nextMinute { background-image: url(../images/nextSingle.png);}
+.ztime-result { width: 1.6rem; text-align: center; font-size: .36rem;}
+/*.calendar-time { display: -webkit-box; -webkit-box-align: center; -webkit-box-pack: center; height: .4rem;  padding-left: .3rem; padding-right: .3rem; background: #181f28;}
+.calendar-time h1 { font-size: .3rem; color: #fff;}
+.calendar-time p {}*/
+.ztime-btn { padding: .3rem; text-align: right; display: -webkit-box; -webkit-box-pack: justify;}
+.ztime-complete { width: 1.2rem; height: .5rem; background: #666666; line-height: .5rem; color: #fff; font-size: .26rem; text-align: center;}
+.ztime-back { width: 1.2rem; height: .5rem; background: none; line-height: .5rem; color: #666; font-size: .6rem; text-align: left; font-weight: bold;}
+/*.ztime-inactive { display: none;}
+.ztime-active { display: block;}*/
+.ztime-body {}
+.ztime-hourBox { display: -webkit-box; padding-top: .3rem; padding-bottom: .3rem;}
+.ztime-ampm { width: 1.8rem; text-align: center;}
+.ztime-ampm li { height: .5rem; position: relative;}
+.ztime-ampm li span { padding-left: .05rem; padding-right: .05rem;}
+.ztime-ampm li.zcur span { display: inline-block; color: #f8714d; font-weight: bold; width: .56rem; height: .36rem; line-height: .36rem; background-color: #f8714d; color: #fff;}
+.ztime-ampm li.zcur:after { display: inline-block; content: ''; position: absolute; right: .366rem; bottom: .14rem; width: 0; height: 0; border: .178rem transparent solid; border-left: .2rem solid #f8714d; border-right: 0 transparent solid;}
+.ztime-hourContent { -webkit-box-flex: 1;}
+.ztime-hourContent .ztime-tr { padding-left: 0; padding-right: .3rem;}
+.ztime-tr { display: -webkit-box; text-align: center;  padding-left: .3rem; padding-right: .3rem;}
+.ztime-th,
+.ztime-td { position: relative; width: 12.5%; height: .54rem;}
+.ztime-th { display: -webkit-box; -webkit-box-align: end; width: 16.666%; height: .54rem; font-size: .26rem;}
+.ztime-th span { font-size: .2rem;}
+.ztime-th dd { color: #666; font-size: 0;}
+
+/*.ztime-td:hover { background-color: rgba(248, 113, 77, .02)}*/
+.ztime-line { background: -webkit-linear-gradient(transparent 50%, #ebebeb 50%) bottom no-repeat; background-size: 100% 1px;}
+.ztime-color { color: #f8714d;}
+.ztime-gray { color: #999;}
+.ztime-dark { color: #666;}
+.ztime-darker { color: #333;}
+.ztime-light { color: #eee;}
+.ztime-white { color: #fff;}
+
+.ztime-darker .ztime-point {}
+.ztime-darker .ztime-unit { color: #999;}
+.ztime-light .ztime-point {}
+.ztime-light .ztime-unit { color: #fafafa;}
+/*禁止点击样式*/
+.ztime-stop { background: #f5f6f8;}
+.ztime-stop .ztime-point { color: #ccc;}
+.ztime-stop .ztime-unit { color: #eee;}
+/*小时*/
+.ztime-hour {}
+/*自然分钟*/
+.ztime-minute { display: -webkit-box; -webkit-box-orient: vertical; -webkit-box-pack: center; margin: 0 auto; height: .7rem; border-radius: 50%; line-height: 1;}
+/*公历/阳历*/
+.ztime-point { font-size: .22rem;}
+/*农历/阴历*/
+.ztime-unit { line-height: 1.2; font-size: 0rem;}
+/*选中的小时*/
+.ztime-setedHour { color: #f8714d; font-size: .4rem;}
+/*.ztime-setedHour .ztime-point { font-size: .38rem;}
+.ztime-setedHour .ztime-unit { color: #f8714d; font-size: .18rem;}*/
+/*选中的分钟*/
+.ztime-setedMinute { color: #f8714d;}
+.ztime-setedMinute .ztime-point { font-size: .4rem;}
+.ztime-setedMinute .ztime-unit { color: #f8714d; font-size: .22rem;}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/zcalendar.css"/>
+		<script src="../js/ratio.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/solar2lunar.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ZzlCalendar.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.zinput { border: 1px #ccc solid; height: .4rem; width: 40%; padding: .1rem; background: #fff; margin: .2rem; font-size: .3rem;}
+			.defineClass {background:#ccc; font-size:.18rem;}
+			.getArguments { padding: .3rem;}
+			.getArguments h1 { font-size: .3rem; color: #666;}
+			.getArguments h1 i { margin-left: .2rem; color: #000;}
+			.getArguments h1 span { margin-left: .2rem; color: #09f;}
+		</style>
+	</head>
+	<body>
+		<input class="zinput zzl-js" type="text" name="" id="" value="" />
+		<input class="zinput zzl-js" type="text" name="" id="" value="" />
+		<input class="zinput zzl-js" type="text" name="" id="" value="" />
+		<div class="zcalendar-opacity" id="zcalendar-opacity"></div>
+		<!--main start-->
+		<div class="zcalendar" id="zcalendar">
+			<div class="zcalendar-months">
+				<div class="zcalendar-header">
+					<dl class="zcalendar-headerLeft">
+						<dd class="zcalendar-prevYear" id="prevYear"></dd>
+						<dd class="zcalendar-prevMonth" id="prevMonth"></dd>
+						<dt class="zcalendar-result zcalendar-white">
+							<div class="" id="setDate">
+								<span data-year="2018年" data-month="10月">2018年10月</span>
+							</div>
+						</dt>
+						<dd class="zcalendar-nextMonth" id="nextMonth"></dd>
+						<dd class="zcalendar-nextYear" id="nextYear"></dd>
+					</dl>
+					<p class="zcalendar-headerRight zcalendar-gray" id="today">今天</p>
+				</div>
+				<div class="zcalendar-body" id="zcalendarBody"></div>
+			</div>
+			<div class="zcalendar-btn" id="zcalendarBtn"><p>选好了</p></div>
+		</div>
+		<!--main end-->
+		<div class="getArguments">
+			<h1>今天是<i></i><span id="getArgument1">点击获取</span></h1>
+			<h1>今天是星期<i></i><span id="getArgument2">点击获取</span></h1>
+			<h1>今天是农历<i></i><span id="getArgument3">点击获取</span></h1>
+			<h1>当前月共<i></i>天<span id="getArgument4">点击获取</span></h1>
+			<h1>当前是<i></i>年<span id="getArgument5">点击获取</span></h1>
+			<h1>当前是<i></i>年<span id="getArgument6">点击获取</span></h1>
+			<h1>当前是<i></i>月<span id="getArgument7">点击获取</span></h1>
+		</div>
+		
+		<script type="text/javascript">
+			var self = null
+			var zzls = document.querySelectorAll('.zzl-js')
+			var zcalendarOpacity = document.getElementById('zcalendar-opacity')
+			var zcalendar = document.getElementById('zcalendar')
+			for (var i = 0; i < zzls.length; i++) {
+				zzls[i].addEventListener('click', function () {
+					zcalendar.style.display = 'block'
+					zcalendarOpacity.style.display = 'block'
+					self = this
+				}, false)
+			}
+			/*
+			 * 关闭日历
+			 */
+			var closelayer = function () {
+				zcalendarOpacity.style.display = 'none'
+				zcalendar.style.display = 'none'
+			}
+			
+			// 点阴影关闭日历
+			zcalendarOpacity.addEventListener('click', function (e) {
+				if (e.target.id == 'zcalendar-opacity') {
+					closelayer()
+				}
+			})
+			
+			// 实例化
+			var renC = new ZzlCalendar ('zcalendarBody', {
+				onSelect: function (o) { // 日期选择事件
+					// 选中某一天追加样式
+					if (o.id.slice(0, 3) != 'wrn') {// 排除上月末和下月初提示日期（灰字日期）
+						if (o.type == 1) {
+							var sted = renC.myCalendar.querySelectorAll('.zcalendar-selected')
+							for (var t = 0; t < sted.length; t++) {
+								sted[t].classList.remove('zcalendar-selected')
+							}
+							document.getElementById(o.id).classList.add('zcalendar-selected')
+							closelayer()
+							self.value = o.id.slice(3)
+							self.setAttribute('dataDate', o.id.slice(3))
+						}
+					}
+				}
+			})
+			// 点击回到今天
+			document.getElementById("today").addEventListener('click', function () {
+				renC.toToday()
+			})
+		</script>
+		
+		<script type="text/javascript">
+			/**
+			 * 直到找到前一个节点是标签并返回该节点
+			 * @param {HTMLString} ele
+			 */
+			function getNodeType(ele) {
+				if (ele.previousElementSibling.nodeType == 1) {
+					return ele.previousElementSibling
+				} else {
+					return arguments.callee(ele.previousElementSibling)
+				}
+			}
+			console.log(getNodeType(document.getElementById("getArgument1")))
+			var today = calendar.solar2lunar(renC.nowDate.getFullYear(), (renC.nowDate.getMonth() + 1), renC.nowDate.getDate())
+			console.log(today)
+			
+			// 今天是
+			document.getElementById("getArgument1").addEventListener('click', function () {
+				getNodeType(this).innerText = ' ' + renC.nowDate.getFullYear() + '-' + (renC.nowDate.getMonth() + 1) + '-' + renC.nowDate.getDate()
+			}, false)
+			// 今天周几
+			document.getElementById("getArgument2").addEventListener('click', function () {
+				getNodeType(this).innerText = ' ' + renC.nowDate.getDay() + ' '
+			}, false)
+			// 今天是农历
+			document.getElementById("getArgument3").addEventListener('click', function () {
+				getNodeType(this).innerText =  ' ' + today.cYear + '年' + today.IMonthCn + today.IDayCn + ' '
+			}, false)
+			// 当月总天数
+			document.getElementById("getArgument4").addEventListener('click', function () {
+				getNodeType(this).innerText = renC.monthDays + ' '
+			}, false)
+			// 当前是什么年
+			document.getElementById("getArgument5").addEventListener('click', function () {
+				var today = calendar.solar2lunar(renC.year, (renC.month), renC.date)
+				getNodeType(this).innerText = ' ' + today.Animal + ' '
+			}, false)
+			// 当天年份
+			document.getElementById("getArgument6").addEventListener('click', function () {
+				getNodeType(this).innerText = ' ' + renC.year + ' '
+			}, false)
+			// 当天月份
+			document.getElementById("getArgument7").addEventListener('click', function () {
+				getNodeType(this).innerText = ' ' + renC.month + ' '
+			}, false)
+			
+			
+			/*
+			 * // 今天object
+			renC.nowDate
+			// 今天所属年份
+			renC.nowDate.getFullYear()
+			// 今天所属月份
+			renC.nowDate.getMonth() + 1
+			// 今天日期
+			renC.nowDate.getDate()
+			// 今天周几
+			renC.nowDate.getDay()
+			
+			// 当月总天数
+			renC.monthDays
+			// 当天年份
+			renC.year
+			// 当天月份
+			renC.month
+			
+			// 回到今天
+			// renC.toToday()
+			// 翻上一年 整数数字
+			// renC.jumpYear(-1)
+			// 翻下一年 整数数字
+			// renC.jumpYear(1)
+			// 翻上一月 整数数字
+			// renC.jumpMoth(-1)
+			// 翻下一月 整数数字
+			// renC.jumpMoth(1)
+			*/
+		</script>
+	</body>
+</html>
