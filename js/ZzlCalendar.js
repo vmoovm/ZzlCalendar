@@ -115,13 +115,13 @@ function ZzlCalendar (domId, options) {
 	this.RenderCalendar = function (year, month) {
 		this.year = year
 		this.month = month
-		if (document.querySelector('.zcalendar-active')) document.querySelector('.zcalendar-active').classList.remove('zcalendar-active')
+		/*if (document.querySelector('.zcalendar-active')) document.querySelector('.zcalendar-active').classList.remove('zcalendar-active')
 		if (document.getElementById('tab' + this.year + this.month)) {
 			document.getElementById('tab' + this.year + this.month).classList.add('zcalendar-active')
 			return
 		} else {
 			console.log('首次渲染' + this.year + '年' + this.month + '月日历')
-		}
+		}*/
 		if (this.year < 1900) {
 			console.log('1900年前为无意义操作')
 			return
@@ -204,16 +204,16 @@ function ZzlCalendar (domId, options) {
 			}
 			calendarHTML += '</dl>'
 		}
-		var tabHTML = '<div class="zcalendar-inactive zcalendar-active" id="tab' + this.year + this.month + '" >'
-		tabHTML += calendarHTML
-		tabHTML += '</div>'
-		// this.myCalendar.innerHTML = tabHTML
-		var DOMArray = []
+		// var tabHTML = '<div class="zcalendar-inactive zcalendar-active" id="tab' + this.year + this.month + '" >'
+		// tabHTML += calendarHTML
+		// tabHTML += '</div>'
+		this.myCalendar.innerHTML = calendarHTML
+		/*var DOMArray = []
 		DOMArray = parseToDOM(tabHTML)
 		for(var m = 0; m < DOMArray.length; m++) {
 			var mdom = DOMArray[m].cloneNode(true);
 			this.myCalendar.appendChild(mdom)
-		}
+		}*/
 		
 		// this.myCalendar.appendChild()
 		// this.myCalendar.innerHTML = calendarHTML
@@ -263,6 +263,7 @@ function ZzlCalendar (domId, options) {
 			// 注册绑定事件
 			if (!(RegExp(' zcalendar-stop ').test(' ' + childEles[n].className + ' '))) {
 				childEles[n].addEventListener('click', function (e) {
+					console.log(this)
 					that.date = this.id.slice(3).split('-')[2]
 					that.zconf.onSelect({
 						id: this.id, // 返回当前点击元素的id
