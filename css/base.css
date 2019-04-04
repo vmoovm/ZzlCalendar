@@ -58,7 +58,7 @@ em,i,u{font-weight:normal;font-style:normal;text-decoration:none;}
 User-defined
 -----------------------------------------------------*/
 h1,h2,h3,h4,h5,h6 { font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; font-size:0.6rem; font-weight:normal;}	
-body {font-size:0.6rem; font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; color:#333; background:#fff;}
+body { font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; color:#333; background:#fff;}
 input,select,textarea{ margin: 0; padding:0; vertical-align:middle; font-family:Tahoma, Helvetica, Arial, 'Microsoft YaHei', sans-serif; color:#333; outline:none; resize:none;}
 
 a { color: #333; text-decoration: none; }

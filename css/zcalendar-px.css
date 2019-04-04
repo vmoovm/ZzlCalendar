@@ -1,0 +1,92 @@
+body { background: #f5f6f8;}
+/*-----------------------------------------------------
+学习中心-学习日历(插件)
+-----------------------------------------------------*/
+.zcalendar { position: fixed; left: 50%; top: 50%; margin-left: -300px; margin-top: -260px; width: 450px; padding-bottom: 20px; color: #333; font-size: 16px; background: #fff; display: none;}
+.zcalendar-opacity { position: fixed; left: 0; top: 0; bottom: 0; right: 0; height: 100%; background-color: rgba(0, 0, 0, .5); display: none; overflow: auto;}
+.zcalendar-header { display: table; width: 418px; height: auto; padding: 12px 16px; background: #181f28;}
+.zcalendar-result { display: table-cell; width: 180px; margin-left: 20px; margin-right: 20px; text-align: center;}
+.zcalendar-headerLeft { display: table-cell; font-size: 26px;}
+.zcalendar-headerRight { display: table-cell; font-size: 16px;}
+.zcalendar-prevYear,
+.zcalendar-nextYear { display: table-cell; width: 44px; height: 44px; margin-left: 10px; margin-right: 10px; background-position: center center; background-repeat: no-repeat; background-size: 24px 16px;}
+.zcalendar-prevYear { background-image: url(../images/preDouble.png);}
+.zcalendar-nextYear { background-image: url(../images/nextDouble.png);}
+.zcalendar-prevMonth,
+.zcalendar-nextMonth { display: table-cell; width: 30px; height: 30px; margin-left: 10px; margin-right: 10px; background-position: center center; background-repeat: no-repeat; background-size: 14px 14px;}
+.zcalendar-prevMonth { background-image: url(../images/prevSingle.png);}
+.zcalendar-nextMonth { background-image: url(../images/nextSingle.png);}
+.zcalendar-btn { padding-top: 20px; padding-bottom: 20px; text-align: center; display: none;}
+.zcalendar-btn p { display: inline-block; width: 200px; height: 60px; background: #666666; line-height: 60px; color: #fff; font-size: 30px;}
+.zcalendar-body {}
+.zcalendar-inactive { display: none;}
+.zcalendar-active { display: block;}
+.zcalendar-tr { display: table; width: 410px; text-align: center;  padding-left: 20px; padding-right: 20px;}
+.zcalendar-th,
+.zcalendar-td { display: table-cell; position: relative; width: 14.285%; height: 55px; padding-top: 6px;}
+.zcalendar-th { height: 30px;}
+/*.zcalendar-td:hover { background-color: rgba(248, 113, 77, .02)}*/
+.zcalendar-line { background: -webkit-linear-gradient(transparent 50%, #ebebeb 50%) bottom no-repeat; background-size: 100% 1px;}
+.zcalendar-color { color: #f8714d;}
+.zcalendar-gray { color: #999;}
+.zcalendar-dark { color: #666;}
+.zcalendar-darker { color: #333;}
+.zcalendar-light { color: #eee;}
+.zcalendar-white { color: #fff;}
+
+.zcalendar-darker .zcalendar-solar {}
+.zcalendar-darker .zcalendar-lunar { color: #999;}
+.zcalendar-light .zcalendar-solar {}
+.zcalendar-light .zcalendar-lunar { color: #fafafa;}
+/*禁止点击样式*/
+.zcalendar-stop { background: #f5f6f8;}
+.zcalendar-stop .zcalendar-solar { color: #ccc;}
+.zcalendar-stop .zcalendar-lunar { color: #eee;}
+/*周几*/
+.zcalendar-week {}
+/*自然日*/
+.zcalendar-date { margin: 0 auto; width: 44px; height: 44px; border-radius: 50%; line-height: 1;}
+/*公历/阳历*/
+.zcalendar-solar { line-height: 1.3; font-size: 16px;}
+/*农历/阴历*/
+.zcalendar-lunar { line-height: 1.3; font-size: 12px;}
+/*今天*/
+.zcalendar-today { color: #f8714d;}
+.zcalendar-today .zcalendar-lunar { color: #f8714d;}
+/*当月当天*/
+/*.zcalendar-current { background-color: #f8714d; color: #fff;}
+.zcalendar-current .zcalendar-lunar { color: #fff;}*/
+/*通用自定义(可接收代码块，p为自定义任意标签代码块)*/
+.zcalendar-define { }
+.zcalendar-define p { /*width: 74px; height: 24px;*/ margin: 0 auto; background-size: 73px 63px; background-position: center center; background-repeat: no-repeat;}
+/*自定义1*/
+.zcalendar-define1 {}
+.zcalendar-define1 p { background-image: url(../images/bear-green.png);}
+/*自定义2*/
+.zcalendar-define2 {}
+.zcalendar-define2 p { background-image: url(../images/bear-blue.png);}
+/*自定义3*/
+.zcalendar-define3 {}
+.zcalendar-define3 p { background-image: url(../images/bear-purple.png);}
+/*自定义4*/
+.zcalendar-define4 {}
+.zcalendar-define4 p { background-image: url(../images/bear-red.png);}
+/*完全自定义代码块*/
+.zcalendar-selected { }
+.zcalendar-selected .zcalendar-date { background-color: #f8714d;}
+.zcalendar-selected .zcalendar-solar { color: #fff;}
+.zcalendar-selected .zcalendar-lunar { color: #fff;}
+.zcalendar-warning { position: absolute; right: 12px; top: 12px; width: 18px; height: 18px; border-radius: 12px; background-color: #f8694d;}
+
+
+/*得分规则*/
+.zrule { color: #999;}
+.zrule-list { padding-top: 26px; padding-bottom: 45px;}
+.zrule-list dt { line-height: 40px; text-align: center; font-size: 18px;}
+.zrule-list dd { line-height: 40px; font-size: 18px;}
+.zrule-list dd img { width: 46px;}
+.zrule-list dd span,
+.zrule-list dd img { vertical-align: middle;}
+
+
+

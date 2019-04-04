@@ -4,7 +4,7 @@
  * @param {Object} 配置项
  * 
  * 兼容到IE9以上
- * 更新：2019-3-4
+ * 更新：2019-3-25
  * 作者：张中乐
  */
 function ZzlCalendar (domId, options) {
@@ -45,6 +45,28 @@ function ZzlCalendar (domId, options) {
 	}
 	
 	/**
+	 * 添加追加样式
+	 * @param {Object} el
+	 * @param {Object} c
+	 */
+	this.addClass = function (el, c) {
+		console.log(el)
+		if (hasClass (el, c)) return
+		var newClass = el.className.split(' ')
+		newClass.push(c)
+		el.className = newClass.join(' ')
+	}
+	
+	/**
+	 * 判断是否有某样式返回布尔值
+	 * @param {Object} el
+	 * @param {Object} c
+	 */
+	this.hasClass = function (el, c) {
+		var re = new RegExp("(^|\\s)" + c + "(\\s|$)");
+        return re.test(el.className);
+	}
+	/**
 	 * 获取所有子元素
 	 * @param {Object} ele 父元素传dom对象
 	 * 
@@ -57,8 +79,10 @@ function ZzlCalendar (domId, options) {
 		}
 		return eleMatch; 
 	}
-	// 初始化仿IOSSelect触发选择月Dom
+	// 更新年月Dom
 	this.selectMonthDom = this.zconf.selectMonthId ? document.getElementById(this.zconf.selectMonthId) : false;
+	// 最外层id，多个日历时用来区分当前日历
+	this.handlerId = this.zconf.handlerId ? document.getElementById(this.zconf.handlerId) : false;
 	// 日历所追加的位置Dom
 	this.myCalendar = document.getElementById(domId)
 	// 初始化日期
@@ -250,7 +274,7 @@ function ZzlCalendar (domId, options) {
 		// 给未来时间追加禁止绑定事件的样式名
 		if (this.zconf.isPastDate && this.year == this.nowDate.getFullYear() && this.month == (this.nowDate.getMonth() + 1)) {
 			for (var d = this.nowDate.getDate() + 1; d <= this.monthDays; d++) {
-				document.getElementById('col' + this.year + '-'  + this.month + '-' + d).classList.add('zcalendar-stop')
+				this.addClass(document.getElementById('col' + this.year + '-'  + this.month + '-' + d), 'zcalendar-stop')
 			}
 		}
 		var childEles = this.myCalendar.getElementsByClassName('zcalendar-td')
@@ -397,15 +421,11 @@ function ZzlCalendar (domId, options) {
 	 * 
 	 */
 	this.readDate = function (str) {
-		console.log(str)
 		this.year = str.split('-')[0]
 		this.month = str.split('-')[1]
 		this.date = str.split('-')[2]
 		if (!document.getElementById('col' + str)) {
 			this.RenderCalendar(this.year, this.month)
-		} else {
-			if (document.querySelector('.zcalendar-active')) document.querySelector('.zcalendar-active').classList.remove('zcalendar-active')
-			document.getElementById('tab' + this.year + this.month).classList.add('zcalendar-active')
 		}
 		this.syncDateDom()
 	}
